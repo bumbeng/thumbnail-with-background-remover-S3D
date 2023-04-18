@@ -7,7 +7,7 @@
 https://github.com/fabiorinaldus399/gcode-tumbnail-generator-for-Simplify3D
 
 - add my StlToImg.py file to your folder 
-- install rembg with command:
+- install rembg with command in cmd:
   pip install rembg 
   
   if you want to add more than one stl file to your buildplate it shows only the last added stl as thumbnail! You can combine it in simplify, export this file and import the combined stl! So You can get an thumbnail of more than 1 stl.
