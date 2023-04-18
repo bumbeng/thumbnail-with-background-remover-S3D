@@ -6,7 +6,7 @@
 - follow this instructions, its the original code without removing background:
 https://github.com/fabiorinaldus399/gcode-tumbnail-generator-for-Simplify3D
 
-- add my StlToImg.py file to your folder 
+- add my StlToImg.py file to your folder (only windows)
 - install rembg with command in cmd:
   pip install rembg 
   
