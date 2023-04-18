@@ -4,4 +4,4 @@ follow this instructions, its the original code without removing background
 https://github.com/fabiorinaldus399/gcode-tumbnail-generator-for-Simplify3D
 
 - install rembg with command:
-  pip install rembg
+  [pip install rembg]
