@@ -5,7 +5,8 @@
 
 - Instructions(original code): https://github.com/fabiorinaldus399/gcode-tumbnail-generator-for-Simplify3D
 
-- add my StlToImg.py file to StlToImg Folder (only windows)
+[ONLY WINDOWS]
+- add my StlToImg.py file to StlToImg Folder 
 - install rembg with command in cmd:
   pip install rembg 
   
