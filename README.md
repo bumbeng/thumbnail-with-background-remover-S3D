@@ -10,4 +10,5 @@ Instructions to add background remover [WINDOWS ONLY]
 - install rembg with command in cmd:
   pip install rembg 
   
-#Note if you want to add more than one stl file to your buildplate it shows only the last added stl as thumbnail! You can combine it in simplify, export this file and import the combined stl! So You can get an thumbnail of more than 1 stl.
+#Note 
+If you want to add more than one stl file to your buildplate you need to combine it in simplify then export this file and import the combined stl! So You can get an thumbnail of more than 1 stl.
