@@ -5,6 +5,7 @@ import argparse
 from PIL import Image
 from PyQt5.QtGui import QImage
 from PyQt5.QtCore import QBuffer
+from rembg import remove
 import base64
         
 parser = argparse.ArgumentParser(description='Gcode image encoder')
@@ -49,9 +50,6 @@ command = args.path + " .\command.scad -o .\image.png --autocenter --viewall --c
 os.system('cmd /c "' + command + '"')
 
 image = ".\image.png"
-
-from rembg import remove
-from PIL import Image
 
 input_path = ".\image.png"
 output_path = ".\output.png"
