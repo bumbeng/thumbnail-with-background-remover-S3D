@@ -62,7 +62,7 @@ print("Starting image encoding...")
 
 def convertImage(image):
     img = Image.open(output_path)
-    img = img.resize((width // antialias_factor, height // antialias_factor), resample=Image.ANTIALIAS)
+    img = img.resize((width // antialias_factor, height // antialias_factor), Image.Resampling.LANCZOS)
     img.save(image)
     return QImage(image)
     
