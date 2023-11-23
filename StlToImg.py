@@ -1,11 +1,10 @@
-## Written By Fabio Rinaldini
+## Written By Fabio Rinaldini added By Sascha Bürger
 
 import os
 import argparse
 from PIL import Image
 from PyQt5.QtGui import QImage
 from PyQt5.QtCore import QBuffer
-from rembg import remove
 import base64
         
 parser = argparse.ArgumentParser(description='Gcode image encoder')
@@ -13,11 +12,11 @@ parser.add_argument('--gcodename', type=str, default="",
                     help='the path of the gcode file')
 parser.add_argument('--stlname', type=str, default="",
                     help='the path of the stl file')
-parser.add_argument('--height', type=int, default=600,
+parser.add_argument('--height', type=int, default=300,
                     help='the height of the image')
-parser.add_argument('--width', type=int, default=600,
+parser.add_argument('--width', type=int, default=300,
                     help='the width of the image')
-parser.add_argument('--antialias', type=int, default=2,
+parser.add_argument('--antialias', type=int, default=3,
                     help='antialias factor (1 = disabled)')
 parser.add_argument('--path', type=str, default='"C:\\Program Files\\OpenSCAD\\openscad.com"',
                     help='the path of Openscad')
@@ -50,19 +49,42 @@ command = args.path + " .\command.scad -o .\image.png --autocenter --viewall --c
 os.system('cmd /c "' + command + '"')
 
 image = ".\image.png"
-
 input_path = ".\image.png"
 output_path = ".\output.png"
 
-input = Image.open(input_path)
-output = remove(input)
-output.save(output_path)
-##encode image in gcode
-print("Starting image encoding...")
+def remove_black_background_with_transparency(image_path):
+    # Open the image using Pillow
+    img = Image.open(image_path)
+
+    # Convert the image to RGBA (if it's not already in RGBA mode)
+    img = img.convert("RGBA")
+
+    # Get the image data as a NumPy array
+    data = img.getdata()
+
+    # Create a new data array with transparency
+    new_data = []
+    for item in data:
+        # If the pixel is black, set its alpha (transparency) value to 0
+        if item[:3] == (0, 0, 0):
+            new_data.append((0, 0, 0, 0))
+        else:
+            new_data.append(item)
+
+    # Update the image with the new data
+    img.putdata(new_data)
+
+    # Save or display the result
+    img = img.save("output.png")
+    
+input_image_path = image
+remove_black_background_with_transparency(input_image_path)
+
+##encode image in gcode/e encoding...")
 
 def convertImage(image):
     img = Image.open(output_path)
-    img = img.resize((width // antialias_factor, height // antialias_factor), Image.Resampling.LANCZOS)
+    img = img.resize((width , height ), Image.Resampling.LANCZOS)
     img.save(image)
     return QImage(image)
     
@@ -95,7 +117,7 @@ def convertImageToGcode(encoded_image, width, height, chunk_size=78):
 
 def execute(data):
 
-    conv_image = convertImage(image)
+    conv_image = convertImage(output_path)
     if conv_image:
         encoded_image = encodeImage(conv_image)
         image_gcode = convertImageToGcode(
@@ -119,6 +141,7 @@ def execute(data):
         os.remove(".\command.scad")
         os.remove(".\image.png")
         os.remove(".\output.png")
+       
         
     print("Done")
 
