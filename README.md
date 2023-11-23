@@ -1,6 +1,7 @@
 # thumbnail-with-background-remover-S3D
 
-![new](https://github.com/bumbeng/thumbnail-with-background-remover-S3D/assets/111509593/1a7305c4-aa9a-4c48-a9ff-588afc7a6bdb)
+![new](https://github.com/bumbeng/thumbnail-with-background-remover-S3D/assets/111509593/1a7305c4-aa9a-4c48-a9ff-588afc7a6bdb) ![new1](https://github.com/bumbeng/thumbnail-with-background-remover-S3D/assets/111509593/c2a837af-6d78-403a-a0de-157a1b8d867b)
+
 
 
 Original-Code: https://github.com/fabiorinaldus399/gcode-tumbnail-generator-for-Simplify3D
